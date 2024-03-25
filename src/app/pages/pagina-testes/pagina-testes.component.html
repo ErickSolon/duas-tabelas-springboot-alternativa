@@ -1,0 +1,23 @@
+<table class="container table table-responsive">
+    <thead>
+        <tr>
+            <th scope="col">#</th>
+            <th scope="col">Nome</th>
+            <th scope="col">Sobrenome</th>
+            <th scope="col">CPF</th>
+            <th scope="col"></th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let pessoa of pessoas">
+            <th scope="row">{{ pessoa.id }}</th>
+            <td>{{ pessoa.nome }}</td>
+            <td>{{ pessoa.sobrenome }}</td>
+            <td>{{ pessoa.documentosModel?.cpf }}</td>
+            <td>
+                <a class="btn btn-warning" routerLink="editar/{{ pessoa.id }}" role="button">Editar</a>
+                <a class="btn btn-danger" routerLink="deletar/{{ pessoa.id }}" role="button">Deletar</a>
+            </td>
+        </tr>
+    </tbody>
+</table>

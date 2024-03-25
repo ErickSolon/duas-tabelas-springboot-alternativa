@@ -1,0 +1,24 @@
+<div class="container">
+    <div class="row">
+        <div class="col-md-3 mb-3">
+            <label for="nomeInput" class="form-label">Nome</label>
+            <input type="text" [(ngModel)]="pessoa.nome" name="nome" id="nomeInput" class="form-control" placeholder=""
+                aria-describedby="helpId" />
+        </div>
+
+        <div class="col-md-3 mb-3">
+            <label for="sobrenomeInput" class="form-label">Sobrenome</label>
+            <input type="text" [(ngModel)]="pessoa.sobrenome" name="sobrenome" id="sobrenomeInput" class="form-control"
+                placeholder="" aria-describedby="helpId" />
+        </div>
+
+        <div class="col-md-3 mb-3">
+            <label for="CPFInput" class="form-label">CPF</label>
+            <input type="text" *ngIf="pessoa && pessoa.documentosModel && pessoa.documentosModel.cpf !== undefined"
+                [(ngModel)]="pessoa.documentosModel.cpf" name="cpf" id="CPFInput" class="form-control" placeholder=""
+                aria-describedby="helpId" />
+        </div>
+
+        <button class="btn btn-warning" (click)="onClickUpdate()">Atualizar</button>
+    </div>
+</div>
