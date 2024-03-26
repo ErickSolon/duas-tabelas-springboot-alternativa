@@ -7,6 +7,8 @@ import lombok.Builder;
 import lombok.RequiredArgsConstructor;
 import lombok.SneakyThrows;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.PathVariable;
 
@@ -17,8 +19,8 @@ import java.util.List;
 public class PessoasService {
     private final PessoasRepository pessoasRepository;
 
-    public List<PessoasModel> findAll() {
-        return pessoasRepository.findAll();
+    public Page<PessoasModel> findAll(Pageable pageable) {
+        return pessoasRepository.findAll(pageable);
     }
 
     public PessoasModel findById(Long id) {

@@ -1,5 +1,5 @@
 import { PessoasModel } from './../models/pessoas-model';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 
@@ -11,8 +11,12 @@ export class ApiServiceService {
 
   constructor(private httpClient: HttpClient) { }
 
-  getAll(): Observable<PessoasModel[]> {
-    return this.httpClient.get<PessoasModel[]>(this.apiUrl)
+  getAll(page: number, size: number): Observable<any> {
+    const httpParams = new HttpParams()
+      .set('page', page.toString())
+      .set('size', size.toString())
+
+    return this.httpClient.get<any>(this.apiUrl, { params: httpParams })
   }
 
   getById(id: any): Observable<PessoasModel> {

@@ -1,7 +1,7 @@
 export interface PessoasModel {
     id?: BigInteger,
     nome?: string,
-    sobrenome?: string
+    sobrenome?: string,
     documentosModel?: DocumentosModel
 }
 

@@ -4,10 +4,10 @@ import com.estudo.crud.estudo.models.PessoasModel;
 import com.estudo.crud.estudo.services.PessoasService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.data.web.PageableDefault;
 import org.springframework.web.bind.annotation.*;
 
-import java.awt.print.Pageable;
 import java.util.List;
 
 @RestController
@@ -18,8 +18,8 @@ public class PessoasController {
     private final PessoasService pessoasService;
 
     @GetMapping
-    public List<PessoasModel> getAll() {
-        return pessoasService.findAll();
+    public Page<PessoasModel> getAll(@PageableDefault(page = 0, sort = {"id"}, size = 5) Pageable pageable) {
+        return pessoasService.findAll(pageable);
     }
 
     @GetMapping("{id}")
