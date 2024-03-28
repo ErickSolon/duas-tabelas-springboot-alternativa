@@ -15,11 +15,17 @@ export class PaginaTestesComponent implements OnInit {
   pagina: number = 0
   size: number = 5
   totalPaginas: number = 0
+  arrayTotalPaginas: number[] = []
 
   carregarPagina(): void {
     this.api.getAll(this.pagina, this.size).subscribe((resultado) => {
-      this.pessoas = resultado.content;
       this.totalPaginas = resultado.totalPages
+      this.pessoas = resultado.content
+      if (this.arrayTotalPaginas.length === 0) {
+        for (let contador = 0; contador <= this.totalPaginas; contador++) {
+          this.arrayTotalPaginas.push(contador)
+        }
+      }
     })
   }
 
