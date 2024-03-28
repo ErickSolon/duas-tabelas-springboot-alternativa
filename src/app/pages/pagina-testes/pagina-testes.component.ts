@@ -22,7 +22,7 @@ export class PaginaTestesComponent implements OnInit {
       this.totalPaginas = resultado.totalPages
       this.pessoas = resultado.content
       if (this.arrayTotalPaginas.length === 0) {
-        for (let contador = 0; contador <= this.totalPaginas; contador++) {
+        for (let contador = 1; contador <= this.totalPaginas; contador++) {
           this.arrayTotalPaginas.push(contador)
         }
       }

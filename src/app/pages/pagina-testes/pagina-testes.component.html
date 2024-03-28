@@ -1,61 +1,65 @@
-<table class="container table table-responsive">
-    <thead>
-        <tr>
-            <th scope="col">#</th>
-            <th scope="col">Nome</th>
-            <th scope="col">Sobrenome</th>
-            <th scope="col">CPF</th>
-            <th scope="col"></th>
-        </tr>
-    </thead>
-    <tbody>
-        <tr *ngFor="let pessoa of pessoas">
-            <th scope="row">{{ pessoa.id }}</th>
-            <td>{{ pessoa.nome }}</td>
-            <td>{{ pessoa.sobrenome }}</td>
-            <td>{{ pessoa.documentosModel?.cpf }}</td>
-            <td>
-                <a class="btn btn-warning" routerLink="editar/{{ pessoa.id }}" role="button">Editar</a>
-                <a class="btn btn-danger" routerLink="deletar/{{ pessoa.id }}" role="button">Deletar</a>
-            </td>
-        </tr>
-    </tbody>
-</table>
+<div class="container">
+    <a routerLink="/testes/adicionar" class="btn btn-success" role="button">+</a>
 
-<nav aria-label="Page navigation">
-    <ul class="pagination p-5">
-        @if (pagina == 0) {
-        <li class="page-item disabled">
-            <a class="page-link" aria-label="Previous">
-                <span aria-hidden="true"><label>&laquo;</label></span>
-            </a>
-        </li>
-        } @else {
-        <li class="page-item">
-            <a class="page-link" aria-label="Previous" (click)="anteriorPagina()">
-                <span aria-hidden="true"><label>&laquo;</label></span>
-            </a>
-        </li>
-        }
+    <table class="table table-responsive">
+        <thead>
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">Nome</th>
+                <th scope="col">Sobrenome</th>
+                <th scope="col">CPF</th>
+                <th scope="col"></th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let pessoa of pessoas">
+                <th scope="row">{{ pessoa.id }}</th>
+                <td>{{ pessoa.nome }}</td>
+                <td>{{ pessoa.sobrenome }}</td>
+                <td>{{ pessoa.documentosModel?.cpf }}</td>
+                <td>
+                    <a class="btn btn-warning" routerLink="editar/{{ pessoa.id }}" role="button">Editar</a>
+                    <a class="btn btn-danger" routerLink="deletar/{{ pessoa.id }}" role="button">Deletar</a>
+                </td>
+            </tr>
+        </tbody>
+    </table>
 
-        @for (item of this.arrayTotalPaginas; track $index) {
-        <li class="page-item disabled" aria-current="page">
-            <a class="page-link">{{$index + 1}}</a>
-        </li>
-        }
+    <nav aria-label="Page navigation">
+        <ul class="pagination">
+            @if (pagina == 0) {
+            <li class="page-item disabled">
+                <a class="page-link" aria-label="Previous">
+                    <span aria-hidden="true"><label>&laquo;</label></span>
+                </a>
+            </li>
+            } @else {
+            <li class="page-item">
+                <a class="page-link" aria-label="Previous" (click)="anteriorPagina()">
+                    <span aria-hidden="true"><label>&laquo;</label></span>
+                </a>
+            </li>
+            }
 
-        @if (pagina == totalPaginas - 1) {
-        <li class="page-item disabled">
-            <a class="page-link" aria-label="Next">
-                <span aria-hidden="true"><label>&raquo;</label></span>
-            </a>
-        </li>
-        } @else {
-        <li class="page-item" (click)="proximaPagina()">
-            <a class="page-link" aria-label="Next">
-                <span aria-hidden="true"><label>&raquo;</label></span>
-            </a>
-        </li>
-        }
-    </ul>
-</nav>
+            @for (item of this.arrayTotalPaginas; track $index) {
+            <li class="page-item disabled" aria-current="page">
+                <a class="page-link">{{$index + 1}}</a>
+            </li>
+            }
+
+            @if (pagina == totalPaginas - 1) {
+            <li class="page-item disabled">
+                <a class="page-link" aria-label="Next">
+                    <span aria-hidden="true"><label>&raquo;</label></span>
+                </a>
+            </li>
+            } @else {
+            <li class="page-item" (click)="proximaPagina()">
+                <a class="page-link" aria-label="Next">
+                    <span aria-hidden="true"><label>&raquo;</label></span>
+                </a>
+            </li>
+            }
+        </ul>
+    </nav>
+</div>

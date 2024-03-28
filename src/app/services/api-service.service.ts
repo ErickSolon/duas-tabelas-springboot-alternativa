@@ -30,4 +30,8 @@ export class ApiServiceService {
   deleteById(id: any): Observable<PessoasModel> {
     return this.httpClient.delete<PessoasModel>(this.apiUrl + id)
   }
+
+  save(pessoas: PessoasModel): Observable<PessoasModel> {
+    return this.httpClient.post<PessoasModel>(this.apiUrl, pessoas)
+  }
 }
